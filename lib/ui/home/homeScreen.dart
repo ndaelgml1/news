@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news/core/models/categoryModel.dart';
+import 'package:news/core/remote/network/api_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
-import 'package:news/core/widgets/categoryItem.dart';
 import 'package:news/core/widgets/drawer.dart';
+import 'package:news/ui/home/details_home.dart';
+import 'package:news/ui/home/general_home.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
 
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  @override
+  void initState() {
+    ApiManager.getSource("sport");
+    // TODO: implement initState
+    super.initState();
+  }
+  CategoryModel ? categoryModel ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +29,7 @@ class Homescreen extends StatelessWidget {
       drawer: CustomDrawer(),
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        title: Text(
+        title: Text(categoryModel!= null ? categoryModel!.text :
           TextManager.home ,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
@@ -27,34 +40,17 @@ class Homescreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: REdgeInsets.all(14),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-                TextManager.welcomeText,
-              style: TextTheme.of(context).headlineMedium!.copyWith(fontSize: 24),
+      body: categoryModel != null ?
+      DetailsHome(categoryModel!) :
+      GeneralHome(showCategoryDetails) ,
 
-            ),
-            SizedBox(height: 14.h,),
-            Expanded(
-              child: ListView.separated(
-                  itemBuilder: (context , index )=> CategoryItem(
-                      index: index,
-                      categoryModel:CategoryModel.categories[index],
-                  ),
-                  separatorBuilder: (context, index) => SizedBox(height: 16.h,),
-                  itemCount:CategoryModel.categories.length
-              ),
-            ),
-
-
-
-          ],
-        ),
-      ),
     );
+  }
+
+   void showCategoryDetails (CategoryModel selectedCategory){
+    categoryModel = selectedCategory ;
+    setState(() {
+
+    });
   }
 }

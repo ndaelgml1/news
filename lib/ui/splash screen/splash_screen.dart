@@ -27,32 +27,30 @@ class _SplashScreenState extends State<SplashScreen> {
     return SafeArea(
       child: Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
-        body: Expanded(
-          child: Padding(
-            padding: REdgeInsets.symmetric(vertical: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Spacer(),
-                Image.asset(
-                  AssetsManager.mic ,
-                  color: Theme.of(context).colorScheme.secondary ,
-                  colorBlendMode: BlendMode.srcIn ,
-                  height: 184.h,
-                  width: 107.w,
-                ).animate().scale(duration: Duration(seconds: 3)),
-                Spacer() ,
-                Image.asset(
-                  AssetsManager.branding ,
-                  color: Theme.of(context).colorScheme.secondary ,
-                  colorBlendMode: BlendMode.srcIn ,
-                  height: 85.h,
-                  width: 214.w,
-                ),
+        body: Padding(
+          padding: REdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Spacer(),
+              Image.asset(
+                AssetsManager.mic ,
+                color: Theme.of(context).colorScheme.secondary ,
+                colorBlendMode: BlendMode.srcIn ,
+                height: 184.h,
+                width: 107.w,
+              ).animate().scale(duration: Duration(seconds: 3)),
+              Spacer() ,
+              Image.asset(
+                AssetsManager.branding ,
+                color: Theme.of(context).colorScheme.secondary ,
+                colorBlendMode: BlendMode.srcIn ,
+                height: 85.h,
+                width: 214.w,
+              ),
 
-              ],
-            ),
+            ],
           ),
         ),
       ),

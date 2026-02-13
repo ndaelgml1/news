@@ -38,6 +38,9 @@ dependencies:
   flutter_animate: ^4.5.2
   google_fonts: ^7.0.0
   flutter_svg: ^2.2.3
+  timeago: ^3.7.1
+  cached_network_image: ^3.4.1
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:

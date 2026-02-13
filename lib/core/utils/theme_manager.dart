@@ -5,12 +5,14 @@ import 'package:news/core/utils/colors_manager.dart';
 
 abstract class ThemeManager {
   static final ThemeData lightTheme = ThemeData(
+
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.white,
       primary: ColorsManager.white,
       secondary: ColorsManager.black,
         onPrimary:  ColorsManager.white,
-        onSecondary: ColorsManager.black
+        onSecondary: ColorsManager.black,
+      surface: ColorsManager.gray ,
     ),
     drawerTheme: DrawerThemeData(
       backgroundColor: ColorsManager.black ,
@@ -46,10 +48,10 @@ abstract class ThemeManager {
             fontWeight: FontWeight.w700,
             color: ColorsManager.black
         ),
-      displaySmall: GoogleFonts.inter(
-          fontSize: 26.sp ,
-          fontWeight: FontWeight.w700,
-          color: ColorsManager.white
+      headlineSmall: GoogleFonts.inter(
+        color: ColorsManager.black,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w700,
       ),
     ),
     // iconTheme: IconThemeData(
@@ -60,11 +62,12 @@ abstract class ThemeManager {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
+
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.black,
       primary: ColorsManager.black,
       secondary: ColorsManager.white,
+      surface: ColorsManager.gray ,
 
     ),
     drawerTheme: DrawerThemeData(
@@ -96,21 +99,30 @@ abstract class ThemeManager {
         fontSize: 20.sp,
         fontWeight: FontWeight.w500,
       ),
+      headlineSmall: GoogleFonts.inter(
+        color: ColorsManager.white,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      ),
+
       labelMedium: GoogleFonts.inter(
         fontSize: 30.sp ,
         fontWeight: FontWeight.w500,
         color: ColorsManager.black
+      ),
+      labelSmall: GoogleFonts.inter(
+          fontSize: 14.sp ,
+          fontWeight: FontWeight.w500,
+          color: ColorsManager.gray
       ),
       displayMedium:  GoogleFonts.inter(
           fontSize: 26.sp ,
           fontWeight: FontWeight.w700,
           color: ColorsManager.black
       ),
-      displaySmall: GoogleFonts.inter(
-          fontSize: 26.sp ,
-          fontWeight: FontWeight.w700,
-          color: ColorsManager.white
-      )
+
+
+
     ),
     // iconTheme: IconThemeData(
     //   color: ColorsManager.white,
