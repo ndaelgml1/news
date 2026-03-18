@@ -3,8 +3,8 @@ import 'package:news/core/models/categoryModel.dart';
 import 'package:news/core/remote/network/api_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
 import 'package:news/core/widgets/drawer.dart';
-import 'package:news/ui/home/details_home.dart';
-import 'package:news/ui/home/general_home.dart';
+import 'package:news/ui/home/details%20home/details_home.dart';
+import 'package:news/ui/home/general%20home/general_home.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});

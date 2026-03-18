@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news/core/models/Article%20Model/Article.dart';
 import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/widgets/articleDetailsSheet.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({super.key});
+  ArticleItem(this.article);
+  Article article;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class ArticleItem extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           backgroundColor: Theme.of(context).colorScheme.secondary,
           context: context,
-          builder: (context) => Articledetailssheet(),
+          builder: (context) => Articledetailssheet(article),
         );
       },
       child: Container(
@@ -32,10 +34,12 @@ class ArticleItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r),
               clipBehavior: Clip.antiAlias,
               child: CachedNetworkImage(
-                imageUrl:
-                    "https://tse2.mm.bing.net/th/id/OIP.za5X761kw-Vh9Ow8BXNx_gHaEK?pid=Api&P=0&h=220",
-                placeholder: (context, url) =>
-                    Center(child: CircularProgressIndicator()),
+                imageUrl: article.urlToImage ?? "",
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
                 errorWidget: (context, url, error) => Center(
                   child: Icon(
                     Icons.error_outline,
@@ -50,7 +54,7 @@ class ArticleItem extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Text(
-              "40-year-old man falls 200 feet to his death while canyoneering at national park",
+              article.title ?? "",
               style: Theme.of(
                 context,
               ).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
@@ -62,7 +66,7 @@ class ArticleItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  " john ",
+                  "BY: ${article.author ?? ""}",
                   style: GoogleFonts.inter(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
@@ -70,7 +74,7 @@ class ArticleItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  timeago.format(DateTime.now()),
+                  timeago.format(DateTime.parse(article.publishedAt ?? "")),
                   style: GoogleFonts.inter(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
@@ -83,6 +87,5 @@ class ArticleItem extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

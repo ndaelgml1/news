@@ -2,12 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news/core/models/Article%20Model/Article.dart';
+import 'package:news/core/models/categoryModel.dart';
 import 'package:news/core/utils/text_manager.dart';
 
 import '../utils/colors_manager.dart';
 
 class Articledetailssheet extends StatelessWidget {
-  const Articledetailssheet({super.key});
+  Articledetailssheet(this.article);
+  Article article;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +23,7 @@ class Articledetailssheet extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             child: CachedNetworkImage(
               imageUrl:
-                  "https://tse2.mm.bing.net/th/id/OIP.za5X761kw-Vh9Ow8BXNx_gHaEK?pid=Api&P=0&h=220",
+                  article.urlToImage??"",
               placeholder: (context, url) =>
                   Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Center(
@@ -37,7 +40,7 @@ class Articledetailssheet extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "A 40-year-old man has fallen approximately 200 feet to his death while canyoneering with three others at Zion National Park in Utah, authorities confirmed.\r\nThe incident occurred on Saturday when the… [+1529 chars]",
+            article.description??"" ,
             style:GoogleFonts.inter(
                 fontSize: 14.sp ,
                 fontWeight: FontWeight.w700,
