@@ -33,6 +33,11 @@ abstract class ThemeManager {
       ),
     ),
     textTheme: TextTheme(
+      displaySmall: GoogleFonts.inter(
+        color: ColorsManager.white,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      ),
       headlineMedium: GoogleFonts.inter(
         color: ColorsManager.black,
         fontSize: 20.sp,
@@ -94,6 +99,11 @@ abstract class ThemeManager {
       ),
     ),
     textTheme: TextTheme(
+      displaySmall: GoogleFonts.inter(
+        color: ColorsManager.white,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      ),
       headlineMedium: GoogleFonts.inter(
         color: ColorsManager.white,
         fontSize: 20.sp,

@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news/core/Data/dataSource_Impl/ArticlesApiDataSource_Impl.dart';
+import 'package:news/core/Data/sourceRepoImpl/article_repo_impl.dart';
+import 'package:news/core/remote/network/api_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
 import 'package:news/ui/home/details%20home/viewModel/articleviewModel.dart';
 import 'package:news/ui/home/widgets/articleItem.dart';
@@ -15,10 +18,12 @@ class Articlelist extends StatefulWidget {
 }
 
 class _ArticlelistState extends State<Articlelist> {
+
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ArticleViewModel()..getArticles(widget.sourceId),
+      create: (context) => ArticleViewModel(ArticleRepoImpl(ArticlesApiDataSourceImpl(ApiManager())))..getArticles(widget.sourceId),
       child: BlocBuilder<ArticleViewModel, ArticleState>(
         builder: (context, state) {
           if (state is ErrorState) {
@@ -60,8 +65,4 @@ class _ArticlelistState extends State<Articlelist> {
   }
 }
 
-/* ListView.separated(
-        itemBuilder: (context,index)=> ArticleItem(),
-        separatorBuilder: (context,index)=> SizedBox(height: 16.h,),
-        itemCount: 10
-    );*/
+

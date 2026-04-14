@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news/core/models/Article%20Model/Article.dart';
 import 'package:news/core/utils/colors_manager.dart';
 import 'package:news/core/widgets/articleDetailsSheet.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../../../core/Data/models/Article Model/Article.dart';
 
 class ArticleItem extends StatelessWidget {
   ArticleItem(this.article);
@@ -63,22 +63,27 @@ class ArticleItem extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "BY: ${article.author ?? ""}",
-                  style: GoogleFonts.inter(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                    color: ColorsManager.gray,
+                Expanded(
+                  flex: 4,
+                  child: Text(
+                    "BY: ${article.author ?? ""}",
+                    style: GoogleFonts.inter(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.gray,
+                    ),
                   ),
                 ),
-                Text(
-                  timeago.format(DateTime.parse(article.publishedAt ?? "")),
-                  style: GoogleFonts.inter(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                    color: ColorsManager.gray,
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    timeago.format(DateTime.parse(article.publishedAt ?? "")),
+                    style: GoogleFonts.inter(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.gray,
+                    ),
                   ),
                 ),
               ],

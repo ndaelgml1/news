@@ -1,6 +1,7 @@
 
 
-import 'package:news/core/models/Source.dart';
+
+import '../Source.dart';
 
 class Article {
   Article({

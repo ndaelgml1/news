@@ -1,14 +1,17 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:news/core/models/Article%20Model/ArticleResponse.dart';
-import 'package:news/core/models/SourcesResponse.dart';
+import 'package:injectable/injectable.dart';
+import 'package:news/core/Data/models/SourcesResponse.dart';
 import 'package:news/core/remote/network/constants.dart';
+
+import '../../Data/models/Article Model/ArticleResponse.dart';
+@singleton
 class ApiManager {
 
 //https://newsapi.org/v2/top-headlines/sources?apiKey=76c2a1438a45435bbcc201aee9d09508
 
-  static Future<SourcesResponse?>getSource(String category)async{
+ Future<SourcesResponse?>getSource(String category)async{
     try{
       Uri url =Uri.https(
         domain,
@@ -26,7 +29,7 @@ class ApiManager {
       return null ;
     }
  }
-  static Future<ArticlesResponse> getArticles(String source)async{
+   Future<ArticlesResponse?> getArticles(String source)async{
 
     Uri url = Uri.https(domain,"/v2/everything",{
       "apiKey":apiKey,

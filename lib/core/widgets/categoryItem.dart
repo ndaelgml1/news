@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news/core/models/categoryModel.dart';
 import 'package:news/core/utils/assets_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
+import '../Data/models/categoryModel.dart';
 
 class CategoryItem extends StatelessWidget {
   CategoryItem({
@@ -30,7 +30,6 @@ class CategoryItem extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              // matchTextDirection: true ,
               categoryModel.image,
               height: 198.h,
               width: 166.w,

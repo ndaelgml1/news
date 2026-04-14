@@ -1,26 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:news/core/models/categoryModel.dart';
-import 'package:news/core/remote/network/api_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
 import 'package:news/core/widgets/drawer.dart';
 import 'package:news/ui/home/details%20home/details_home.dart';
 import 'package:news/ui/home/general%20home/general_home.dart';
 
+import '../../core/Data/models/categoryModel.dart';
+
 class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
-
-
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
 
 class _HomescreenState extends State<Homescreen> {
-  @override
-  void initState() {
-    ApiManager.getSource("sport");
-    // TODO: implement initState
-    super.initState();
-  }
   CategoryModel ? categoryModel ;
   @override
   Widget build(BuildContext context) {
@@ -30,12 +22,12 @@ class _HomescreenState extends State<Homescreen> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: Text(categoryModel!= null ? categoryModel!.text :
-          TextManager.home ,
+          TextManager.home.tr() ,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [
           IconButton(
-              onPressed: (){},
+              onPressed: (){},  /////////////////////////////
               icon: Icon(Icons.search)
           )
         ],
@@ -53,4 +45,5 @@ class _HomescreenState extends State<Homescreen> {
 
     });
   }
+
 }

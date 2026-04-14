@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news/core/models/categoryModel.dart';
 import 'package:news/core/utils/text_manager.dart';
 import 'package:news/core/widgets/categoryItem.dart';
+
+import '../../../core/Data/models/categoryModel.dart';
 
 class GeneralHome extends StatefulWidget {
   void Function (CategoryModel category) onCategoryClicked;
@@ -22,7 +24,7 @@ class _GeneralHomeState extends State<GeneralHome> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            TextManager.welcomeText,
+            TextManager.welcomeText.tr(),
             style: TextTheme.of(context).headlineMedium!.copyWith(fontSize: 24),
 
           ),
@@ -38,7 +40,6 @@ class _GeneralHomeState extends State<GeneralHome> {
 
                     });
                   },
-                  //هحط function ال هي في home with  same shape و type و Parameter
                 ),
                 separatorBuilder: (context, index) => SizedBox(height: 16.h,),
                 itemCount:CategoryModel.categories.length

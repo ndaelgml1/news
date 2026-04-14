@@ -2,10 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news/core/models/Article%20Model/Article.dart';
-import 'package:news/core/models/categoryModel.dart';
 import 'package:news/core/utils/text_manager.dart';
-
+import '../Data/models/Article Model/Article.dart';
 import '../utils/colors_manager.dart';
 
 class Articledetailssheet extends StatelessWidget {
@@ -16,7 +14,6 @@ class Articledetailssheet extends StatelessWidget {
     return Padding(
       padding: REdgeInsets.all(8.0),
       child: Column(
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.r),
