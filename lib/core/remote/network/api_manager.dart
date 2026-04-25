@@ -22,11 +22,20 @@ class ApiManager {
         }
     );
     var response = await http.get(url) ;
+      if (response.statusCode != 200) {
+        print("HTTP Error: ${response.statusCode}");
+        return null;
+      }
     var json = jsonDecode(response.body) ;
+      if (json["status"] != "ok") {
+        print("API Error: ${json["message"]}");
+        return null;
+      }
     var sourcesResponse =SourcesResponse.fromJson(json) ;
     return sourcesResponse ;
     }catch(e){
-      return null ;
+     print("error : $e") ;
+     rethrow ;
     }
  }
    Future<ArticlesResponse?> getArticles(String source)async{
@@ -38,7 +47,12 @@ class ApiManager {
 
     var response = await http.get(url);
     var json = jsonDecode(response.body);
+    if (json["status"] != "ok") {
+      print("API Error: ${json["message"]}");
+      return null;
+    }
     var articlesResponse = ArticlesResponse.fromJson(json);
     return articlesResponse;
   }
 }
+

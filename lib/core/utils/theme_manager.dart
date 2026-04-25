@@ -12,7 +12,11 @@ abstract class ThemeManager {
       secondary: ColorsManager.black,
         onPrimary:  ColorsManager.white,
         onSecondary: ColorsManager.black,
+      // static colors
       surface: ColorsManager.gray ,
+      scrim: ColorsManager.darkGray ,
+      onSurface: ColorsManager.white ,
+      outline: ColorsManager.black ,
     ),
     drawerTheme: DrawerThemeData(
       backgroundColor: ColorsManager.black ,
@@ -72,7 +76,11 @@ abstract class ThemeManager {
       seedColor: ColorsManager.black,
       primary: ColorsManager.black,
       secondary: ColorsManager.white,
+      //static colors
       surface: ColorsManager.gray ,
+      scrim: ColorsManager.darkGray ,
+      onSurface: ColorsManager.white ,
+      outline: ColorsManager.black ,
 
     ),
     drawerTheme: DrawerThemeData(

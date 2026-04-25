@@ -20,7 +20,11 @@ class _DetailsHomeState extends State<DetailsHome> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DetailsScreenViewModel>(
-      create: (context)=>getIt.get<DetailsScreenViewModel>(),
+      create: (context){
+       var vm = getIt.get<DetailsScreenViewModel>();
+       vm.getSources(widget.categoryModel.id) ;
+       return vm;
+      } ,
       child: BlocBuilder<DetailsScreenViewModel , DetailsScreenState > (
           builder: (context, state ) {
             var viewModel = BlocProvider.of<DetailsScreenViewModel>(context);
@@ -28,7 +32,7 @@ class _DetailsHomeState extends State<DetailsHome> {
               return Padding(
                 padding: REdgeInsets.all(8.0),
                 child: DefaultTabController(
-                  length: 10,
+                  length: state.sources.length,
                   child: Column(
                     children: [
                       TabBar(

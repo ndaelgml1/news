@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news/core/utils/routes_manager.dart';
 import 'package:news/core/utils/theme_manager.dart';
 import 'package:news/ui/home/homeScreen.dart';
 import 'package:news/ui/splash%20screen/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'core/DI/di.dart';
+import 'core/utils/language/language_state.dart';
+import 'core/utils/theme/theme_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,26 +33,46 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(393, 852),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeManager.lightTheme,
-          darkTheme: ThemeManager.darkTheme,
-          themeMode: ThemeMode.dark,
-          locale: context.locale,
-          supportedLocales: context.supportedLocales,
-          localizationsDelegates: context.localizationDelegates,
-          routes: {
-            Routes.splashScreen: (context) => SplashScreen(),
-            Routes.home: (_) => Homescreen(),
-          },
-          initialRoute: Routes.splashScreen,
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ThemeCubit()),
+        BlocProvider(create: (_) => LanguageCubit()),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(393, 852),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return BlocBuilder<LanguageCubit, LanguageState>(
+            builder: (context, state) {
+
+              return BlocBuilder<ThemeCubit, int>(
+                builder: (context, state) {
+                  return MaterialApp(
+                    locale: context.locale ,
+                    debugShowCheckedModeBanner: false,
+                    theme: ThemeManager.lightTheme,
+                    darkTheme: ThemeManager.darkTheme,
+                    themeMode: state == 1
+                        ? ThemeMode.dark
+                        : ThemeMode.light,
+
+                    supportedLocales: context.supportedLocales,
+                    localizationsDelegates:
+                    context.localizationDelegates,
+
+                    routes: {
+                      Routes.splashScreen: (context) => SplashScreen(),
+                      Routes.home: (_) => Homescreen(),
+                    },
+                    initialRoute: Routes.splashScreen,
+                  );
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
