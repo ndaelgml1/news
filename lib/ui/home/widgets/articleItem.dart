@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'
+    show REdgeInsets, SizeExtension;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news/core/Data/models/Article%20Model/Article.dart';
 import 'package:news/core/utils/colors_manager.dart';
-import 'package:news/core/widgets/articleDetailsSheet.dart';
+import 'package:news/core/widgets/article_bottom_sheet.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../../../core/Data/models/Article Model/Article.dart';
 
 class ArticleItem extends StatelessWidget {
   ArticleItem(this.article);
@@ -15,12 +16,7 @@ class ArticleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showModalBottomSheet(
-          clipBehavior: Clip.antiAlias,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          context: context,
-          builder: (context) => Articledetailssheet(article),
-        );
+        _showArticleBottomSheet(context, article);
       },
       child: Container(
         padding: REdgeInsets.all(8),
@@ -91,6 +87,17 @@ class ArticleItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showArticleBottomSheet(BuildContext context, Article article) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return ArticleBottomSheet(article);
+      },
     );
   }
 }

@@ -35,60 +35,63 @@ class CategoryItem extends StatelessWidget {
             width: 166.w,
             fit: BoxFit.fill,
           ),
-    
+
           SizedBox(width: 10.w),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-    
-              children: [
-                Text(
-                  categoryModel.text.tr(),
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-                SizedBox(height: 30.h),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: REdgeInsetsDirectional.only(start: 14),
-                    backgroundColor: Theme.of(
-                      context,
-                    ).colorScheme.primary.withAlpha(100),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(84),
-                    ),
+            child: Padding(
+              padding: index.isEven ? REdgeInsets.only(right: 2) : REdgeInsets.only(left: 3) ,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children: [
+                  Text(
+                    categoryModel.text.tr(),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
-                  onPressed: onPressed,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        TextManager.viewAll.tr(),
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineMedium!.copyWith(fontSize: 28.sp),
+                  SizedBox(height: 30.h),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: REdgeInsetsDirectional.only(start: 14),
+                      backgroundColor: Theme.of(
+                        context,
+                      ).colorScheme.primary.withAlpha(100),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(84),
                       ),
-    
-                      CircleAvatar(
-                        backgroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary,
-                        radius: 28.r,
-                        child: SvgPicture.asset(
-                          matchTextDirection: true,
-                          AssetsManager.arrow,
-                          height: 26.h,
-                          width: 26.w,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.secondary,
-                            BlendMode.srcIn,
+                    ),
+                    onPressed: onPressed,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          TextManager.viewAll.tr(),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.headlineMedium!.copyWith(fontSize: 28.sp),
+                        ),
+
+                        CircleAvatar(
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.primary,
+                          radius: 28.r,
+                          child: SvgPicture.asset(
+                            matchTextDirection: true,
+                            AssetsManager.arrow,
+                            height: 26.h,
+                            width: 26.w,
+                            colorFilter: ColorFilter.mode(
+                              Theme.of(context).colorScheme.secondary,
+                              BlendMode.srcIn,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

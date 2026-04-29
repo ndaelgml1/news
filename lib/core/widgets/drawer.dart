@@ -16,6 +16,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Drawer(
+
         child: Column(
           children: [
             Container(
