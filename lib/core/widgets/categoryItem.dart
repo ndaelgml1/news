@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart' show StringTranslateExtension;
+import 'package:easy_localization/easy_localization.dart' show StringTranslateExtension, BuildContextEasyLocalizationExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,8 +19,18 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isEnglish = context.locale.languageCode == "en";
     return Container(
-      padding: REdgeInsetsDirectional.only(end: 8),
+
+
+    padding: REdgeInsetsDirectional.only(
+    start: isEnglish
+    ? (index.isEven ? 0 : 8)
+        : (index.isEven ? 8 : 0),
+    end: isEnglish
+    ? (index.isEven ? 8 : 0)
+        : (index.isEven ? 0 : 8),
+    ),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24.r),

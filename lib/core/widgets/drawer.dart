@@ -65,7 +65,6 @@ class CustomDrawer extends StatelessWidget {
                   const Divider(),
                   SizedBox(height: 24.h),
 
-                  // Theme Section
                   Row(
                     children: [
                       SvgPicture.asset(
@@ -85,14 +84,14 @@ class CustomDrawer extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 12.h),
                   const ThemeToggleViewModel(),
 
                   SizedBox(height: 24.h),
                   const Divider(),
                   SizedBox(height: 24.h),
 
-                  // Language Section
+
                   Row(
                     children: [
                       SvgPicture.asset(
@@ -112,7 +111,7 @@ class CustomDrawer extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 12.h),
                   const LanguageToggleViewModel(),
 
                   SizedBox(height: 16.h),

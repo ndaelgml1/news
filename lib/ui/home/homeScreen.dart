@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:news/core/utils/routes_manager.dart';
 import 'package:news/core/utils/text_manager.dart';
 import 'package:news/core/widgets/drawer.dart';
+import 'package:news/ui/search/search_page.dart';
 import 'package:news/ui/home/details%20home/details_home.dart';
 import 'package:news/ui/home/general%20home/general_home.dart';
 
@@ -27,7 +29,9 @@ class _HomescreenState extends State<Homescreen> {
         ),
         actions: [
           IconButton(
-              onPressed: (){},  /////////////////////////////
+              onPressed: (){
+                Navigator.pushNamed(context, Routes.searchScreen) ;
+              },
               icon: Icon(Icons.search)
           )
         ],

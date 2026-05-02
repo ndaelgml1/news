@@ -1,6 +1,6 @@
 abstract class TextManager {
   static const String home = "Home";
-  static const String welcomeText = "Good Morning\nHere is Some News For You";
+  static const String welcomeText = "welcomeText";
   static const String general = "General";
   static const String viewAll = "ViewAll";
   static const String business = "Business";
@@ -15,4 +15,5 @@ abstract class TextManager {
   static const String language = "Language";
   static const String viewFullArticle = "View Full Article";
   static const String tryAgain = "Try Again";
+  static const String search = "Search";
 }

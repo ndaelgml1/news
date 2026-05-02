@@ -13,162 +13,90 @@ class ArticleBottomSheet extends StatelessWidget {
   Article article;
   @override
   Widget build(BuildContext context)  {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          padding: REdgeInsets.all(8),
-          margin: REdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(16.r) ,
-          ),
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                clipBehavior: Clip.antiAlias,
-                child: CachedNetworkImage(
-                  imageUrl:
-                  article.urlToImage??"",
-                  placeholder: (context, url) =>
-                      Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => Center(
-                    child: Icon(
-                      Icons.error_outline,
-                      size: 24.sp,
-                      color: ColorsManager.red,
+    return Padding(
+      padding: REdgeInsets.symmetric(vertical: 20 , horizontal: 4),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            padding: REdgeInsets.all(8),
+            margin: REdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(16.r) ,
+            ),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16.r),
+                  clipBehavior: Clip.antiAlias,
+                  child: CachedNetworkImage(
+                    imageUrl:
+                    article.urlToImage??"",
+                    placeholder: (context, url) =>
+                        Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) => Center(
+                      child: Icon(
+                        Icons.error_outline,
+                        size: 24.sp,
+                        color: ColorsManager.red,
+                      ),
                     ),
-                  ),
-                  height: 220.h,
-                  fit: BoxFit.fill,
-                  width: double.infinity,
-                ),
-              ),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: REdgeInsets.symmetric(vertical:8),
-                child: Text(
-                  article.description??"" ,
-                  style:GoogleFonts.inter(
-                      fontSize: 14.sp ,
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.primary
+                    height: 220.h,
+                    fit: BoxFit.fill,
+                    width: double.infinity,
                   ),
                 ),
-              ),
-              SizedBox(
-                  height: 18.h
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      padding: REdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))
-                  ),
-                  onPressed: () {
-                    launchUrl(
-                      Uri.parse(article.url ?? "") ,
-                      mode: LaunchMode.inAppBrowserView ,
-                    ) ;
-                  },
+                SizedBox(height: 20.h),
+                Padding(
+                  padding: REdgeInsets.symmetric(vertical:8),
                   child: Text(
-                    TextManager.viewFullArticle.tr(),
-                    style: GoogleFonts.inter(
-                        fontSize: 16.sp,
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontWeight: FontWeight.bold
+                    article.description??"" ,
+                    style:GoogleFonts.inter(
+                        fontSize: 14.sp ,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.primary
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 18.h,) ,
-            ],
+                SizedBox(
+                    height: 18.h
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        padding: REdgeInsets.symmetric(vertical: 16),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))
+                    ),
+                    onPressed: () {
+                      launchUrl(
+                        Uri.parse(article.url ?? "") ,
+                        mode: LaunchMode.inAppBrowserView ,
+                      ) ;
+                    },
+                    child: Text(
+                      TextManager.viewFullArticle.tr(),
+                      style: GoogleFonts.inter(
+                          fontSize: 16.sp,
+                          color: Theme.of(context).colorScheme.secondary,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 18.h,) ,
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
 
 
+      ),
     );
   }
 }
 
 
 
-// return Column(
-// mainAxisAlignment: MainAxisAlignment.end,
-// children: [
-// Container(
-// padding: REdgeInsets.all(4),
-// margin: REdgeInsets.all(6),
-// decoration: BoxDecoration(
-// color: Theme.of(context).colorScheme.secondary,
-// borderRadius: BorderRadius.circular(16.r) ,
-// ),
-// child: Column(
-//
-// children: [
-// ClipRRect(
-// borderRadius: BorderRadius.circular(16.r),
-// clipBehavior: Clip.antiAlias,
-// child: CachedNetworkImage(
-// imageUrl:
-// article.urlToImage??"",
-// placeholder: (context, url) =>
-// Center(child: CircularProgressIndicator()),
-// errorWidget: (context, url, error) => Center(
-// child: Icon(
-// Icons.error_outline,
-// size: 24.sp,
-// color: ColorsManager.red,
-// ),
-// ),
-// height: 220.h,
-// fit: BoxFit.fill,
-// width: double.infinity,
-// ),
-// ),
-// SizedBox(height: 20.h),
-// Padding(
-// padding: REdgeInsets.symmetric(vertical: 8.0),
-// child: Text(
-// article.description??"" ,
-// style:GoogleFonts.inter(
-// fontSize: 14.sp ,
-// fontWeight: FontWeight.w700,
-// color: Theme.of(context).colorScheme.primary
-// ),
-// ),
-// ),
-// SizedBox(
-// height: 18.h
-// ),
-// SizedBox(
-// width: double.infinity,
-// child: ElevatedButton(
-// style: ElevatedButton.styleFrom(
-// padding: REdgeInsets.symmetric(vertical: 16),
-// backgroundColor: Theme.of(context).colorScheme.primary,
-// shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r))
-// ),
-// onPressed: () {}, ///////////////////////////////////////
-// child: Text(
-// TextManager.viewFullArticle.tr(),
-// style: GoogleFonts.inter(
-// fontSize: 16.sp,
-// color: Theme.of(context).colorScheme.secondary,
-// fontWeight: FontWeight.bold
-// ),
-// ),
-// ),
-// ),
-// SizedBox(height: 18.h,) ,
-// ],
-// ),
-// ),
-// ],
-//
-//
-// );

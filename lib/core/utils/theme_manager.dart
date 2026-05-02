@@ -13,11 +13,13 @@ abstract class ThemeManager {
         onPrimary:  ColorsManager.white,
         onSecondary: ColorsManager.black,
       // static colors
-      surface: ColorsManager.gray ,
+       surface: ColorsManager.gray ,
       scrim: ColorsManager.darkGray ,
       onSurface: ColorsManager.white ,
       outline: ColorsManager.black ,
+      error: ColorsManager.red
     ),
+    scaffoldBackgroundColor: ColorsManager.white,
     drawerTheme: DrawerThemeData(
       backgroundColor: ColorsManager.black ,
 
@@ -30,6 +32,9 @@ abstract class ThemeManager {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       backgroundColor: ColorsManager.white,
+      iconTheme: IconThemeData(
+        color: ColorsManager.black,
+      ),
       actionsIconTheme: IconThemeData(
         color: ColorsManager.black,
         opticalSize: 24,
@@ -39,7 +44,7 @@ abstract class ThemeManager {
     textTheme: TextTheme(
       displaySmall: GoogleFonts.inter(
         color: ColorsManager.white,
-        fontSize: 16.sp,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
       ),
       headlineMedium: GoogleFonts.inter(
@@ -63,11 +68,7 @@ abstract class ThemeManager {
         fontWeight: FontWeight.w700,
       ),
     ),
-    // iconTheme: IconThemeData(
-    //   color: ColorsManager.black,
-    //   opticalSize: 24,
-    //   applyTextScaling: true,
-    // ),
+
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -81,8 +82,9 @@ abstract class ThemeManager {
       scrim: ColorsManager.darkGray ,
       onSurface: ColorsManager.white ,
       outline: ColorsManager.black ,
-
+        error: ColorsManager.red,
     ),
+    scaffoldBackgroundColor: ColorsManager.black,
     drawerTheme: DrawerThemeData(
       backgroundColor: ColorsManager.black ,
 
@@ -95,6 +97,7 @@ abstract class ThemeManager {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       backgroundColor: ColorsManager.black,
+
       actionsIconTheme: IconThemeData(
         color: ColorsManager.white,
         opticalSize: 24,
@@ -142,11 +145,7 @@ abstract class ThemeManager {
 
 
     ),
-    // iconTheme: IconThemeData(
-    //   color: ColorsManager.white,
-    //   opticalSize: 24,
-    //   applyTextScaling: true,
-    // ),
+
 
   );
 

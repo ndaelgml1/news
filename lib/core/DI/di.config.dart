@@ -15,14 +15,17 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../ui/home/details%20home/viewModel/articleviewModel.dart' as _i906;
 import '../../ui/home/details%20home/viewModel/detailsScreenViewModel.dart'
     as _i133;
+import '../../ui/search/widgets/search_state.dart' as _i241;
 import '../Data/DataSource/article_data_source.dart' as _i880;
 import '../Data/DataSource/SourcesDataSource.dart' as _i22;
 import '../Data/dataSource_Impl/ArticlesApiDataSource_Impl.dart' as _i871;
 import '../Data/dataSource_Impl/SourceApiDataSource_Impl.dart' as _i150;
 import '../Data/sourceRepoImpl/article_repo_impl.dart' as _i587;
+import '../Data/sourceRepoImpl/search_repo_impl.dart' as _i857;
 import '../Data/sourceRepoImpl/source_repo_impl.dart' as _i533;
 import '../remote/network/api_manager.dart' as _i133;
 import '../Source%20Repo/article_repo.dart' as _i1034;
+import '../Source%20Repo/search_repo.dart' as _i275;
 import '../Source%20Repo/source_repo.dart' as _i830;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -36,12 +39,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i22.SourcesDataSource>(
       () => _i150.SourceApiDataSourceImpl(gh<_i133.ApiManager>()),
     );
+    gh.factory<_i275.SearchRepo>(
+      () => _i857.SearchRepoImpl(gh<_i133.ApiManager>()),
+    );
     gh.factory<_i830.SourceRepo>(
       () => _i533.SourceRepoImpl(gh<_i22.SourcesDataSource>()),
     );
     gh.factory<_i880.ArticleDataSource>(
       () => _i871.ArticlesApiDataSourceImpl(gh<_i133.ApiManager>()),
     );
+    gh.factory<_i241.Search>(() => _i241.Search(gh<_i275.SearchRepo>()));
     gh.factory<_i1034.ArticleRepo>(
       () => _i587.ArticleRepoImpl(gh<_i880.ArticleDataSource>()),
     );

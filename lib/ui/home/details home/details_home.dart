@@ -32,6 +32,7 @@ class _DetailsHomeState extends State<DetailsHome> {
               return Padding(
                 padding: REdgeInsets.all(8.0),
                 child: DefaultTabController(
+                  key: ValueKey(context.locale),
                   length: state.sources.length,
                   child: Column(
                     children: [
